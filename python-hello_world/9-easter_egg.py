@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-print(__import__('this').s.split('\n')[1])
+exec("import this")
