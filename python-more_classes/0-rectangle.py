@@ -4,5 +4,5 @@
 
 
 class Rectangle:
-    """Rectanglesfsd class"""
+    """Rectangle class"""
     pass
