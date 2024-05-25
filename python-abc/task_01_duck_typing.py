@@ -4,24 +4,23 @@
 from abc import ABC, abstractmethod
 import math
 
-# De class abstracta Shape
+# Define class abstracta Shape
 class Shape(ABC):
-
+    
     @abstractmethod
     def area(self):
         pass
-
+    
     @abstractmethod
     def perimeter(self):
         pass
 
-# Def class to her shape
+# Define class Circle that her Shape
 class Circle(Shape):
     def __init__(self, radius):
         if radius < 0:
             raise ValueError("Radius cannot be negative")
         self.radius = radius
-
 
     def area(self):
         return math.pi * self.radius ** 2
@@ -29,7 +28,7 @@ class Circle(Shape):
     def perimeter(self):
         return 2 * math.pi * self.radius
 
-# Def class rectangle that her shape
+# Define class Rectangle that her Shape
 class Rectangle(Shape):
     def __init__(self, width, height):
         self.width = width
@@ -41,9 +40,8 @@ class Rectangle(Shape):
     def perimeter(self):
         return 2 * (self.width + self.height)
 
-# Def shape func
+# Define func shape_info
 def shape_info(shape):
-    # use duck to call
+    # Use ducl to call methods
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
-
