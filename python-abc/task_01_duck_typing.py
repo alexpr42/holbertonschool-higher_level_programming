@@ -1,34 +1,29 @@
-#!/user/bin/python3
-# task_01_duck_typing.py
-
+#!/usr/bin/python3
 from abc import ABC, abstractmethod
-import math
+from math import pi
 
-# Define class abstracta Shape
+
 class Shape(ABC):
-    
     @abstractmethod
     def area(self):
         pass
-    
+
     @abstractmethod
     def perimeter(self):
         pass
 
-# Define class Circle that her Shape
+
 class Circle(Shape):
+      
     def __init__(self, radius):
-        if radius < 0:
-            raise ValueError("Radius cannot be negative")
         self.radius = radius
 
     def area(self):
-        return math.pi * self.radius ** 2
+        return pi * self.radius ** 2
 
     def perimeter(self):
-        return 2 * math.pi * self.radius
+        return 2 * pi * abs(self.radius)
 
-# Define class Rectangle that her Shape
 class Rectangle(Shape):
     def __init__(self, width, height):
         self.width = width
@@ -40,24 +35,18 @@ class Rectangle(Shape):
     def perimeter(self):
         return 2 * (self.width + self.height)
 
-# Define func shape_info
+
 def shape_info(shape):
-    # Use ducl to call methods
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    print("Area:", shape.area())
+    print("Perimeter:", shape.perimeter())
 
 
-# test_circle_negative.py
+# Testing
+circle = Circle(5)
+rectangle = Rectangle(3, 4)
 
-from task_01_duck_typing import Circle
+print("Circle:")
+shape_info(circle)
 
-def test_circle_negative():
-    try:
-        circle_negative = Circle(radius=-5)
-    except ValueError as e:
-        print("Caught an exception for negative radius as expected:", e)
-    else:
-        print("Expected an exception for negative radius, but did not catch one.")
-
-if __name__ == "__main__":
-    test_circle_negative()
+print("\nRectangle:")
+shape_info(rectangle)
