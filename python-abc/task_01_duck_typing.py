@@ -45,3 +45,19 @@ def shape_info(shape):
     # Use ducl to call methods
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
+
+
+# test_circle_negative.py
+
+from task_01_duck_typing import Circle
+
+def test_circle_negative():
+    try:
+        circle_negative = Circle(radius=-5)
+    except ValueError as e:
+        print("Caught an exception for negative radius as expected:", e)
+    else:
+        print("Expected an exception for negative radius, but did not catch one.")
+
+if __name__ == "__main__":
+    test_circle_negative()
