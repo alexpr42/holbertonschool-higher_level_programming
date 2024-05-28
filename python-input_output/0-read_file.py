@@ -3,8 +3,6 @@
 
 
 def read_file(filename=""):
-    """print text from other file
-       and use it in the main file
-    """
+    # print text from other file
     with open(filename, encoding="utf-8") as f:
         read_data = f.read()
