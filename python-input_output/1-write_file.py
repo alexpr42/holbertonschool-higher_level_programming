@@ -6,5 +6,7 @@
 
 
 def write_file(filename="", text=""):
+    """open the text file"""
     with open(filename, 'w', encoding="utf-8") as f:
+        """write or create the file"""
         return f.write(text)
