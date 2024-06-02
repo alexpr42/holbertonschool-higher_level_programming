@@ -1,44 +1,57 @@
-from flask import Flask, jsonify, request
+#!/usr/bin/python3
+
+from flask import Flask, jsonify, request, abort #type: ignore
 
 app = Flask(__name__)
-
-user = {}
+users = {}
 
 @app.route('/')
 def home():
-    return "Welcome to the API Flask!"
+    return "Welcome to the Flask API!"
 
-
-@app.rout('/data')
+@app.route('/data')
 def data():
-    return jsonify(list(user.keys()))
-
+    return jsonify(list(users.keys()))
+    
 @app.route('/status')
 def status():
-    return "OK"
+    return 'OK'
 
-@app.route("/user/<username>")
+@app.route('/users/<username>')
 def get_user(username):
-    user = user.get(username)
-    if user:
-        return jsonify(user)
-    else:
-        return "User Not found", 404
-    
-@app.route("/add_user", methods=["POST"])
-def add_user():
-    req_data = request.get_json()
-    username = req_data.get("username")
+    if username not in users:
+        return jsonify({"error": "User not found"}), 404
 
-if username and username is not users:
-    users[username]={
-        "name": req_data["name"],
-        "age": req_data["age"],
-        "city": req_data["city"]
+    user = users[username]
+    user["username"] = username
+
+    return jsonify(user)
+
+    
+@app.route('/add_user', methods=['POST'])
+def add_user():
+    if request.get_json() is None:
+        abort(400, "Not a JSON")
+
+    data = request.get_json()
+
+    if "username" not in data:
+        return jsonify({"error": "Username is required"}), 400
+
+    users[data["username"]] = {
+        "name": data["name"],
+        "age": data["age"],
+        "city": data["city"]
     }
-    return jsonify(user(username)),201
-else:
-    return "User already exists or invalid data", 400
+
+    output = {
+        "username": data["username"],
+        "name": data["name"],
+        "age": data["age"],
+        "city": data["city"]
+    }
+    return jsonify({"message": "User added", "user": output}), 201
+    
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='localhost', port=5000, debug=True)
