@@ -1,6 +1,2 @@
-#!/usr/bin/python3
-
-
-"""list all database"""
-
+-- List all databases
 SHOW DATABASES;
