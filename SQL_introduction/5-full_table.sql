@@ -1,11 +1,2 @@
--- Drop the table if it exists
-DROP TABLE IF EXISTS `first_table`;
-
--- Create table statement for first_table
-CREATE TABLE `first_table` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(128) DEFAULT NULL,
-  `c` CHAR(1) DEFAULT NULL,
-  `created_at` DATE DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- Show the CREATE TABLE statement for the table first_table
+SHOW CREATE TABLE first_table;
