@@ -1,3 +1,6 @@
+-- Drop the table if it exists
+DROP TABLE IF EXISTS `first_table`;
+
 -- Create table statement for first_table
 CREATE TABLE `first_table` (
   `id` INT NOT NULL AUTO_INCREMENT,
