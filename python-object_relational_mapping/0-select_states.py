@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import MySQLdb
 import sys
+""" This script list all states in usa"""
+
 
 def main():
     # Retrieve the command-line arguments
