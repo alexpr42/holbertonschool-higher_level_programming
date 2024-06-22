@@ -33,7 +33,7 @@ def main():
 
     # Execute the SQL query to retrieve states starting with 'N'
     query = "SELECT id, name FROM states WHERE BINARY name LIKE 'N%'
-    ORDER BY id ASC"
+            ORDER BY id ASC"
     cursor.execute(query)
 
     # Fetch all the rows from the executed query
