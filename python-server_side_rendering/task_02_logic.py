@@ -25,4 +25,3 @@ def items():
     return render_template('items.html', items=data.get('items', []))
 
 if __name__ == '__main__':
-   
